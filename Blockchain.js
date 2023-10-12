@@ -1,4 +1,4 @@
-const block = require("./block")
+const Block = require("./block")
 
 class Blockchain{
     constructor(){
@@ -7,7 +7,15 @@ class Blockchain{
     addBlock({data}){
         const newBlock = Block.mine({
             prevBlock: this.chain[this.chain.length-1],
-            
-        })
+            data,
+        });
+        this.chain.push(newBlock);
     }
 }
+
+const block = new Blockchain();
+block.addBlock({data:"blocks"});
+
+console.log(block);
+
+module.exports = Blockchain

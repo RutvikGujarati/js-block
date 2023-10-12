@@ -20,8 +20,17 @@ class Block {
         data,
         hash: cryptoHash(timestamp, prevHash, data),
        })
-
   }
+  static isValidChain(chain){
+      if(JSON.stringify( chain[0])!== JSON.stringify(Block.Genesis())) return false;
+
+      for(let i=1; i<chain.length; i++){
+       const {timestamp, prevHash, hash, data} = chain[i];
+
+       
+      }
+  }
+
 }
 
 
@@ -39,3 +48,5 @@ const Block1 = new Block({
 
 // const res = Block.mine({prevBlock:Block1, data: "Block2"});
 // console.log(res);
+
+module.exports = Block;
